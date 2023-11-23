@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #808080; /* Grey background for a neutral look */
+  font-family: "Arial", sans-serif;
+  overflow: hidden; /* Prevents scrolling */
+}
+
+#chess-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+#game-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#start-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#turn-indicator {
+  font-size: 20px;
+  margin: 10px;
+  visibility: visible; /* Make it visible */
+}
+
+/* Good luck message with black outline */
+#good-luck-message {
+  font-size: 48px; /* Increased font size for emphasis */
+  color: #dcdcdc; /* Light grey color for the text */
+  font-weight: bold; /* Make it bold to stand out */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000; /* Black outline effect */
+  margin-top: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeInOut 3s ease-in-out forwards;
+  z-index: 10; /* Ensures it's on top of other elements */
+}
+
+#chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 70px); /* Slightly smaller tiles */
+  grid-template-rows: repeat(8, 70px);
+  border: 2px solid black;
+}
+
+#chessboard .tile {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px; /* Slightly smaller chess pieces */
+}
+
+#chessboard .tile:hover {
+  background-color: rgba(255, 255, 0, 0.5); /* Highlight tiles on hover */
+}
+
+#chessboard .tile.white-tile {
+  background-color: white;
+  color: black; /* Text color for black pieces on white tiles */
+}
+
+#chessboard .tile.black-tile {
+  background-color: #8b4513; /* Brown color for the dark tiles */
+  color: white; /* Text color for white pieces on brown tiles */
+}
+
+#chessboard .tile .white-piece {
+  color: transparent;
+  text-shadow: 0 0 0 black; /* Black outline for white pieces */
+}
+
+#chessboard .tile .black-piece {
+  color: black; /* Solid color for black pieces */
+}
+
+/* Cursor styles */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.movable-piece:hover {
+  cursor: grab;
+}
+
+.tile.invalid-move:hover {
+  cursor: not-allowed; /* 'X' cursor for invalid move */
+}
+
+.valid-move:hover {
+  cursor: pointer; /* Cursor style for valid moves */
+}
+
+.invalid-move:hover {
+  cursor: not-allowed; /* Cursor style for invalid moves */
+}
+
+/* Keyframes for good luck message animation */
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+}
+
+#game-status {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #444; /* Default color */
+}
+
+.highlight-check {
+  color: orange; /* Color for check message */
+}
+
+.highlight-checkmate {
+  color: red; /* Color for checkmate message */
+}
